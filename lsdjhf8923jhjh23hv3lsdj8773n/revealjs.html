@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Васильева Н.А." />
+  <title>Онлайн обновляемый отчет по содержанию ИС</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="revealjs_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="revealjs_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="reveal.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link href="revealjs_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="revealjs_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Онлайн обновляемый отчет по содержанию ИС</h1>
+    <h2 class="author">Васильева Н.А.</h2>
+    <h3 class="date">7.11.2019</h3>
+</section>
+
+<section id="почвенная-информация" class="slide level2">
+<h2>Почвенная информация</h2>
+<p>Общая статистика</p>
+<pre><code>  Всего измерений: 5696</code></pre>
+<pre><code>  Всего образцов: 1233</code></pre>
+<pre><code>  Всего разных почв: 24</code></pre>
+<pre><code>  Всего видов анализа: 72</code></pre>
+<pre><code>  Всего регионов исследования: 10</code></pre>
+</section>
+<section><section id="статистика-по-видам-анализов" class="titleslide slide level1"><h1>Статистика по видам анализов</h1></section><section id="section" class="slide level2">
+<h2></h2>
+<p><img src="revealjs_files/figure-revealjs/unnamed-chunk-3-1.png" width="1152" /></p>
+</section><section id="section-1" class="slide level2">
+<h2></h2>
+<pre><code>                                                Число измерений
+  рН (водородный показатель)                                600
+  М.д. карбонатов (по Козловскому):CO2                      417
+  М.д. органического вещества (Гумус по Тюрину)             393
+  Калий по Масловой                                         275
+  Обменные катионы (по Шолленбергеру):Ca++                  266
+  Обменные катионы (по Шолленбергеру):Mg++                  266
+  рН солевой вытяжки                                        227
+  М.д. цинка в почве                                        218
+  Общий азот                                                212
+  М.д. кадмия в почве                                       210
+  М.д. меди в почве                                         210
+  М.д. свинца в почве                                       202
+  Обменные катионы (по Шолленбергеру):Na+                   192
+  Обменные катионы (по Шолленбергеру):K+                    148
+  Фосфор по Кирсанову в почве                               148
+  Фосфор по Чирикову в почве                                148
+  М.д. карбонатов (по Козловскому):CaCO3                    135
+  М.д. содержания  гипса                                    133
+  Железо по Тамму                                           110
+  Обменный натрий                                           103
+  Калий по Чирикову в почве                                 101
+  Фосфор по Мачигину в почве                                 80
+  Железо по Мера-Джексон                                     74
+  М.д. железа в почве                                        48
+  М.д. марганца в почве                                      43
+  Обменный (подвижный) алюминий в почве                      42
+  Емкость катионного обмена                                  35
+  &lt;0,001 мм, %                                               33
+  0,005-0,001 мм, %                                          33
+  0,01-0,005 мм, %                                           33
+  0,05-0,01 мм, %                                            33
+  0,25-0,05 мм, %                                            33
+  1,0-0,25 мм, %                                             33
+  Гигроскопическая вода, %                                   33
+  физическая глина &lt; 0,01 мм, %                              33
+  физический песок &gt; 0,01 мм, %                              33
+  М.д. натрия в почве                                        25
+  Обменная кислотность в почве                               23
+  М.к. кальция в воде                                        18
+  М.к. магния в воде                                         18
+  М.к. натрия в воде                                         18
+  Удельная электрическая проводимость                        17
+  Сухой остаток                                              16
+  М.д. никеля в почве                                        11
+  Бикарбонат-ион в почве                                     10
+  Карбонат ион в почве                                       10
+  М.д. иона сульфата в почве                                 10
+  М.д. иона хлорида в почве                                  10
+  М.д. калия в почве                                         10
+  М.д. кальция в почве                                       10
+  М.д. магния в почве                                        10
+  М.к. сульфатов в воде                                      10
+  Обменные катионы (по Пфефферу):Ca++                        10
+  Обменные катионы (по Пфефферу):K+                          10
+  Обменные катионы (по Пфефферу):Mg++                        10
+  Обменные катионы (по Пфефферу):Na+                         10
+  Щелочность общая в воде                                    10
+  М.к.  гидрокарбонат-иона в воде                             8
+  М.к.  карбонат-иона  в воде                                 8
+  М.к. аммонийного азота в воде                               8
+  М.к. калия в воде                                           8
+  М.к. нитрат-ионов в воде                                    8
+  М.к. сульфат-ионов в воде                                   8
+  М.к. хлорид-ионов в воде                                    8
+  Перманганатная окисляемость                                 8
+  Гидролитическая кислотность                                 5
+  Сумма поглощенных оснований по Каппену                      5
+  М.д. зольности                                              3
+  М.д. кобальта в почве                                       3
+  М.д. хрома в почве                                          3
+  М.д. плотного остатка водной вытяжки                        2
+  М.к.  хлоридов в воде                                       2</code></pre>
+</section></section>
+<section><section id="статистика-по-областям" class="titleslide slide level1"><h1>Статистика по областям</h1></section><section id="section-2" class="slide level2">
+<h2></h2>
+<p><img src="revealjs_files/figure-revealjs/unnamed-chunk-5-1.png" width="1152" /></p>
+</section><section id="section-3" class="slide level2">
+<h2></h2>
+<pre><code>                        Число измерений
+  Волгоградская область            1524
+  Тульская область                 1350
+  Владимирская область              953
+  Воронежская область               564
+  Курская область                   408
+  Сахалинская область               346
+  Московская область                276
+  Республика Дагестан               206
+  Москва                             55
+  Тамбовская область                 14</code></pre>
+</section><section id="section-4" class="slide level2">
+<h2></h2>
+<pre><code>                        Число видов анализа
+  Республика Дагестан                    26
+  Тульская область                       25
+  Воронежская область                    23
+  Волгоградская область                  19
+  Московская область                     18
+  Курская область                        14
+  Москва                                 11
+  Владимирская область                    8
+  Сахалинская область                     8
+  Тамбовская область                      7</code></pre>
+</section><section id="section-5" class="slide level2">
+<h2></h2>
+<pre><code>                        Число образцов
+  Волгоградская область            541
+  Владимирская область             244
+  Курская область                  140
+  Тульская область                 133
+  Воронежская область               68
+  Сахалинская область               45
+  Московская область                33
+  Москва                            17
+  Республика Дагестан               10
+  Тамбовская область                 2</code></pre>
+</section></section>
+<section><section id="статистика-по-почвам" class="titleslide slide level1"><h1>Статистика по почвам</h1></section><section id="section-6" class="slide level2">
+<h2></h2>
+<p><img src="revealjs_files/figure-revealjs/unnamed-chunk-9-1.png" width="1152" /></p>
+</section><section id="section-7" class="slide level2">
+<h2></h2>
+<pre><code>                                                                                                            Число измерений
+  Дерново-подзолистые преимущественно мелко- и неглубокоподзолистые                                                    1112
+  Серые лесные                                                                                                         1003
+  Каштановые солонцеватые и солончаковатые и солонцы (автоморфные)                                                      601
+  Солонцы (автоморфные)                                                                                                 462
+  Черноземы типичные                                                                                                    408
+  Агрочернозем миграционно-мицеляный                                                                                    396
+  Вулканические слоисто-пепловые                                                                                        278
+  Черноземы выщелоченные                                                                                                221
+  Лугово-каштановые солонцеватые и солончаковатые                                                                       206
+  Солонцы (автоморфные) и бурые солонцеватые                                                                            201
+  Солонцы (автоморфные) и светло-каштановые солонцеватые и солончаковатые                                               201
+  Лугово-черноземные                                                                                                    182
+  Дерново-подзолистые                                                                                                   159
+  Черноземы оподзоленные                                                                                                119
+  перегнойно-грубогумусовые вулканические                                                                                49
+  Солонцы луговатые (полугидроморфные), светло-каштановые солонцеватые и солончаковатые и лугово-каштановые              36
+  грубогумусовые вулканические                                                                                           19
+  Дерново-подзолистые преимущественно неглубокоподзолистые                                                               11
+  Вода                                                                                                                    7
+  Светло-каштановые солонцеватые и солончаковатые, солонцы луговатые (полугидроморфные) и лугово-каштановые               7
+  тёмносерая лесная                                                                                                       7
+  Светло-каштановые                                                                                                       5
+  Солончак                                                                                                                4
+  фон                                                                                                                     2</code></pre>
+</section><section id="section-8" class="slide level2">
+<h2></h2>
+<pre><code>                                                                                                            Число видов измерений
+  Лугово-каштановые солонцеватые и солончаковатые                                                                              26
+  Дерново-подзолистые преимущественно мелко- и неглубокоподзолистые                                                            25
+  Черноземы оподзоленные                                                                                                       19
+  Лугово-черноземные                                                                                                           18
+  Дерново-подзолистые                                                                                                          15
+  Черноземы типичные                                                                                                           14
+  Серые лесные                                                                                                                 12
+  Солонцы (автоморфные) и бурые солонцеватые                                                                                   12
+  Солонцы (автоморфные) и светло-каштановые солонцеватые и солончаковатые                                                      12
+  Черноземы выщелоченные                                                                                                       12
+  Дерново-подзолистые преимущественно неглубокоподзолистые                                                                     11
+  Агрочернозем миграционно-мицеляный                                                                                            9
+  Вулканические слоисто-пепловые                                                                                                8
+  Каштановые солонцеватые и солончаковатые и солонцы (автоморфные)                                                              8
+  перегнойно-грубогумусовые вулканические                                                                                       8
+  грубогумусовые вулканические                                                                                                  7
+  тёмносерая лесная                                                                                                             7
+  Солонцы (автоморфные)                                                                                                         6
+  Вода                                                                                                                          3
+  Светло-каштановые                                                                                                             3
+  Светло-каштановые солонцеватые и солончаковатые, солонцы луговатые (полугидроморфные) и лугово-каштановые                     3
+  Солонцы луговатые (полугидроморфные), светло-каштановые солонцеватые и солончаковатые и лугово-каштановые                     3
+  фон                                                                                                                           2
+  Солончак                                                                                                                      1</code></pre>
+</section><section id="section-9" class="slide level2">
+<h2></h2>
+<pre><code>                                                                                                            Число образцов
+  Каштановые солонцеватые и солончаковатые и солонцы (автоморфные)                                                     274
+  Дерново-подзолистые преимущественно мелко- и неглубокоподзолистые                                                    273
+  Солонцы (автоморфные)                                                                                                168
+  Черноземы типичные                                                                                                   140
+  Серые лесные                                                                                                          99
+  Агрочернозем миграционно-мицеляный                                                                                    44
+  Солонцы (автоморфные) и бурые солонцеватые                                                                            37
+  Вулканические слоисто-пепловые                                                                                        35
+  Лугово-черноземные                                                                                                    26
+  Солонцы луговатые (полугидроморфные), светло-каштановые солонцеватые и солончаковатые и лугово-каштановые             25
+  Черноземы выщелоченные                                                                                                22
+  Солонцы (автоморфные) и светло-каштановые солонцеватые и солончаковатые                                               19
+  Дерново-подзолистые                                                                                                   18
+  Черноземы оподзоленные                                                                                                11
+  Лугово-каштановые солонцеватые и солончаковатые                                                                       10
+  перегнойно-грубогумусовые вулканические                                                                                7
+  Вода                                                                                                                   5
+  Светло-каштановые солонцеватые и солончаковатые, солонцы луговатые (полугидроморфные) и лугово-каштановые              5
+  Светло-каштановые                                                                                                      4
+  Солончак                                                                                                               4
+  грубогумусовые вулканические                                                                                           3
+  Дерново-подзолистые преимущественно неглубокоподзолистые                                                               2
+  тёмносерая лесная                                                                                                      1
+  фон                                                                                                                    1</code></pre>
+</section></section>
+<section><section id="гистограмма-глубин-отбора" class="titleslide slide level1"><h1>Гистограмма глубин отбора</h1></section><section id="section-10" class="slide level2">
+<h2></h2>
+<p><img src="revealjs_files/figure-revealjs/unnamed-chunk-13-1.png" width="1152" /></p>
+</section></section>
+<section><section id="гистограммы-результатов-распределения-величин" class="titleslide slide level1"><h1>Гистограммы результатов (распределения величин)</h1></section><section id="section-11" class="slide level2">
+<h2></h2>
+<p><img src="revealjs_files/figure-revealjs/unnamed-chunk-14-1.png" width="1152" /></p>
+<p><img src="revealjs_files/figure-revealjs/unnamed-chunk-14-2.png" width="1152" /></p>
+<p><img src="revealjs_files/figure-revealjs/unnamed-chunk-14-3.png" width="1152" /></p>
+</section></section>
+<section><section id="статистика-по-отделам-2018-2019" class="titleslide slide level1"><h1>Статистика по отделам 2018-2019</h1></section><section id="section-12" class="slide level2">
+<h2></h2>
+<p><img src="revealjs_files/figure-revealjs/unnamed-chunk-15-1.png" width="1152" /></p>
+</section></section>
+<section><section id="notes" class="titleslide slide level1"><h1>Notes</h1></section></section>
+<section><section id="визуализация" class="titleslide slide level1"><h1>Визуализация</h1></section><section id="slide-with-map" class="slide level2">
+<h2>Slide with map</h2>
+<iframe width="100%" height="600" src="map_EGRPR.html">
+</iframe>
+</section><section id="slide-with-map-1" class="slide level2">
+<h2>Slide with map</h2>
+<iframe width="100%" height="600" src="map_soildrive.html">
+</iframe>
+</section><section id="map-from-geojson" class="slide level2">
+<h2>map from geojson</h2>
+<iframe width="100%" height="750" src="donut/index.html">
+</iframe>
+</section></section>
+<section><section id="анализ" class="titleslide slide level1"><h1>Анализ</h1></section><section id="section-13" class="slide level2">
+<h2></h2>
+<p><img src="revealjs_files/figure-revealjs/unnamed-chunk-16-1.png" width="1152" /></p>
+</section><section id="section-14" class="slide level2">
+<h2></h2>
+<p><img src="revealjs_files/figure-revealjs/unnamed-chunk-17-1.png" width="1152" /></p>
+</section><section id="section-15" class="slide level2">
+<h2></h2>
+<p><img src="revealjs_files/figure-revealjs/unnamed-chunk-18-1.png" width="1152" /></p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="revealjs_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="revealjs_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Enable slide navigation via mouse wheel
+        mouseWheel: true,
+        // Opens links in an iframe preview overlay
+        previewLinks: true,
+        // Transition style
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        chalkboard: {
+          theme: 'whiteboard',
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'revealjs_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'revealjs_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
+          { src: 'revealjs_files/reveal.js-3.3.0.1/plugin/zoom-js/zoom.js', async: true },
+          { src: 'revealjs_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
