@@ -1,11 +1,11 @@
 #map {
-  width:900px;
-  height:600px;
+  width:1400px;
+  height:1000px;
 }
 #legend {
   position: absolute;
-  bottom: 153px;
-  left: 700px;
+  bottom: 5px;
+  left: 0px;
   margin: 10px;
   padding: 5px;
   border-radius: 5px;
