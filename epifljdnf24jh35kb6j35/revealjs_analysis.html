@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Васильева Н.А." />
-  <title>Статистика по видам анализов</title>
+  <title>Онлайн обновляемый отчет по содержанию Информационной системы SoilDrive</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -444,25 +444,23 @@ style.innerHTML = style_script;
 document.getElementsByTagName('head')[0].appendChild(style);
 </script>
 
-    <link href="revealjs_analysis_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-    <link href="revealjs_analysis_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
 <section>
-    <h1 class="title">Статистика по видам анализов</h1>
+    <h1 class="title">Онлайн обновляемый отчет по содержанию Информационной системы SoilDrive</h1>
     <h2 class="author">Васильева Н.А.</h2>
     <h3 class="date">7.11.2019</h3>
 </section>
 
-<section class="slide level2">
-
-<p>Статистика по видам анализов ## <img src="revealjs_analysis_files/figure-revealjs/unnamed-chunk-2-1.png" width="1152" /></p>
+<section id="статистика-по-видам-анализов" class="slide level2">
+<h2>Статистика по видам анализов</h2>
+<p><img src="revealjs_analysis_files/figure-revealjs/unnamed-chunk-2-1.png" width="768" /></p>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="подный-список-анализов-и-частота-их-использования" class="slide level2">
+<h2>Подный список анализов и частота их использования</h2>
 <pre><code>                                                Число измерений
   рН (водородный показатель)                                600
   М.д. карбонатов (по Козловскому):CO2                      417
@@ -548,10 +546,6 @@ document.getElementsByTagName('head')[0].appendChild(style);
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
-        // Display a presentation progress bar
-        progress: true,
-        // Display the page number of the current slide
-        slideNumber: true,
         // Push each slide change to the browser history
         history: true,
         // Vertical centering of slides
@@ -567,24 +561,8 @@ document.getElementsByTagName('head')[0].appendChild(style);
 
 
 
-        chalkboard: {
-          theme: 'whiteboard',
-        },
-
-        keyboard: {
-          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
-          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
-          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
-           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
-          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
-        },
-
         // Optional reveal.js plugins
         dependencies: [
-          { src: 'revealjs_analysis_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
-          { src: 'revealjs_analysis_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
-          { src: 'revealjs_analysis_files/reveal.js-3.3.0.1/plugin/zoom-js/zoom.js', async: true },
-          { src: 'revealjs_analysis_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
         ]
       });
     </script>
